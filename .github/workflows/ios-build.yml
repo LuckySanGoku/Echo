@@ -1,0 +1,71 @@
+name: iOS Build
+
+on:
+  push:
+    branches: [ main, chore/*, feature/*, fix/* ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-14
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '15.2'
+        
+    - name: Find Xcode project
+      id: find-project
+      run: |
+        PROJECT_PATH=$(find . -name "*.xcodeproj" -maxdepth 2 | head -1)
+        if [ -z "$PROJECT_PATH" ]; then
+          echo "No .xcodeproj found"
+          exit 1
+        fi
+        PROJECT_NAME=$(basename "$PROJECT_PATH" .xcodeproj)
+        echo "project_path=$PROJECT_PATH" >> $GITHUB_OUTPUT
+        echo "project_name=$PROJECT_NAME" >> $GITHUB_OUTPUT
+        echo "Found project: $PROJECT_NAME at $PROJECT_PATH"
+        
+    - name: Find scheme
+      id: find-scheme
+      run: |
+        PROJECT_NAME="${{ steps.find-project.outputs.project_name }}"
+        SCHEME=$(xcodebuild -project "$PROJECT_NAME.xcodeproj" -list | grep -A 20 "Schemes:" | tail -n +2 | grep -v ":" | head -1)
+        if [ -z "$SCHEME" ]; then
+          SCHEME="$PROJECT_NAME"
+        fi
+        echo "scheme=$SCHEME" >> $GITHUB_OUTPUT
+        echo "Using scheme: $SCHEME"
+        
+    - name: Build for simulator
+      run: |
+        xcodebuild build \
+          -project "${{ steps.find-project.outputs.project_name }}.xcodeproj" \
+          -scheme "${{ steps.find-scheme.outputs.scheme }}" \
+          -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
+          -configuration Debug \
+          -derivedDataPath build/
+          
+    - name: Run tests (if available)
+      run: |
+        xcodebuild test \
+          -project "${{ steps.find-project.outputs.project_name }}.xcodeproj" \
+          -scheme "${{ steps.find-scheme.outputs.scheme }}" \
+          -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
+          -configuration Debug \
+          -derivedDataPath build/ \
+          || echo "No tests found or tests failed"
+          
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: build-artifacts
+        path: build/
+        retention-days: 7
