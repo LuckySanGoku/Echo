@@ -1,0 +1,31 @@
+{
+  "title": "The Grand Budapest Hotel",
+  "year": 2014,
+  "type": "Shooting Script (example excerpt)",
+  "episode": null,
+  "source_url": null,
+  "license_notes": null,
+  "ingest_notes": {
+    "scene_split_regex": "^(INT\\.|EXT\\.)",
+    "source_kind": "user-supplied excerpt",
+    "include_in_corpus": true
+  },
+  "scenes": [
+    {
+      "scene_index": 1,
+      "slugline": "INT. DINING ROOM. NIGHT",
+      "text": "The enormous restaurant as before -- but now one of the\n tables has been set for two and is occupied by the\n author and Mr. Moustafa. The nine other guests watch,\n curious, from their usual spots.\n Mr. Moustafa stares at the wine list as he rattles off a\n robust order (oysters, soup, rabbit, fowl, lamb). “Boy\n with Apple” is on the cover of the menu. The waiter\n departs.\n MR. MOUSTAFA\n That should provide us ample time -- if I\n commence promptly.\n AUTHOR\n By all means.\n Another waiter arrives to uncork a split of champagne\n and pours a thimbleful. Mr. Moustafa tastes it and nods.\n The waiter pours two, full coupes. They each drink a\n long sip. Finally, Mr. Moustafa settles in:\n MR. MOUSTAFA\n It begins, as it must, with our mutual\n friend’s predecessor. The beloved,\n original concierge of the Grand Budapest.\n (with deep affection)\n It begins, of course, with --",
+      "shot_list": [
+        { "shot_no": 1, "description": "Establishing shot of dining room floor", "shot_size": "WS", "shot_type": "HA" },
+        { "shot_no": 2, "description": "Zero reads the 'Boy with Apple' menu", "shot_size": "MS", "shot_type": "Shoulder Level" },
+        { "shot_no": 3, "description": "Zero orders dinner", "shot_size": "WS", "shot_type": "Deep Focus" },
+        { "shot_no": 4, "description": "Mr. Jean passes by in the BG", "shot_size": "MS", "shot_type": "Shoulder Level" },
+        { "shot_no": 5, "description": "Wide of champagne arriving", "shot_size": "WS", "shot_type": "Deep Focus" },
+        { "shot_no": 6, "description": "Young writer receives his champagne", "shot_size": "MS", "shot_type": "Shoulder Level" },
+        { "shot_no": 7, "description": "Zero mentions M. Jean", "shot_size": "MS", "shot_type": "Shoulder Level" },
+        { "shot_no": 8, "description": "M. Jean backtracks into shot", "shot_size": "MS", "shot_type": "Shoulder Level" },
+        { "shot_no": 9, "description": "Zero recalls M. Gustave", "shot_size": "MCU", "shot_type": "Single" }
+      ]
+    }
+  ]
+}

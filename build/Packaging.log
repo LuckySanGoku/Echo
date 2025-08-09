@@ -1,0 +1,131 @@
+2025-08-02 11:59:00 +0000 [MT] Initial pipeline context: <IDEDistributionProcessingPipelineContext: 0x114149b40; archive(resolved)="<IDEArchive: 0x600000a0d730>", distributionTask(resolved)="2", distributionDestination(resolved)="1", distributionMethod(resolved)="<IDEDistributionMethodDevelopmentSigned: 0x60000236b160>", team(resolved)="<IDEProvisioningBasicTeam: 0x6000020526a0; teamID='JMAQNZ88DW', teamName='(null)'>">
+	Chain (14, self inclusive):
+	<IDEDistributionProcessingPipelineContext: 0x114149b40; archive = "<IDEArchive: 0x600000a0d730>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60000236b160>", team="<IDEProvisioningBasicTeam: 0x6000020526a0; teamID='JMAQNZ88DW', teamName='(null)'>">
+	<IDEDistributionProcessingPipelineContext: 0x11414c060; archive = "<IDEArchive: 0x600000a0d730>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60000236b160>", team="<IDEProvisioningBasicTeam: 0x6000020526a0; teamID='JMAQNZ88DW', teamName='(null)'>">
+	<IDEDistributionContext: 0x1141495b0; archive = "<IDEArchive: 0x600000a0d730>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60000236b160>", team="<IDEProvisioningBasicTeam: 0x6000020526a0; teamID='JMAQNZ88DW', teamName='(null)'>">
+	<IDEDistributionContext: 0x146829cf0; archive = "<IDEArchive: 0x600000a0d730>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60000236b160>", team="<IDEProvisioningBasicTeam: 0x6000020526a0; teamID='JMAQNZ88DW', teamName='(null)'>">
+	<IDEDistributionContext: 0x1468298c0; archive = "<IDEArchive: 0x600000a0d730>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60000236b160>", team="<IDEProvisioningBasicTeam: 0x6000020526a0; teamID='JMAQNZ88DW', teamName='(null)'>">
+	<IDEDistributionContext: 0x146827710; archive = "<IDEArchive: 0x600000a0d730>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60000236b160>", team="<IDEProvisioningBasicTeam: 0x6000020526a0; teamID='JMAQNZ88DW', teamName='(null)'>">
+	<IDEDistributionContext: 0x1468285b0; archive = "<IDEArchive: 0x600000a0d730>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60000236b160>", team="<IDEProvisioningBasicTeam: 0x6000020526a0; teamID='JMAQNZ88DW', teamName='(null)'>">
+	<IDEDistributionContext: 0x146825da0; archive = "<IDEArchive: 0x600000a0d730>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60000236b160>", team="<IDEProvisioningBasicTeam: 0x6000020526a0; teamID='JMAQNZ88DW', teamName='(null)'>">
+	<IDEDistributionContext: 0x146923770; archive = "<IDEArchive: 0x600000a0d730>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60000236b160>", team="<IDEProvisioningBasicTeam: 0x6000020526a0; teamID='JMAQNZ88DW', teamName='(null)'>">
+	<IDEDistributionContext: 0x146924080; archive = "<IDEArchive: 0x600000a0d730>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60000236b160>", team="(null)">
+	<IDEDistributionContext: 0x11412be30; archive = "<IDEArchive: 0x600000a0d730>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60000236b160>", team="(null)">
+	<IDEDistributionContext: 0x11412bc20; archive = "<IDEArchive: 0x600000a0d730>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60000236b160>", team="(null)">
+	<IDEDistributionContext: 0x14570c610; archive = "<IDEArchive: 0x600000a0d730>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60000236b160>", team="(null)">
+	<IDEDistributionContext: 0x14680d080; archive = "<IDEArchive: 0x600000a0d730>", distributionMethod="(null)", team="(null)">
+</IDEDistributionProcessingPipelineContext: 0x114149b40>
+2025-08-02 11:59:00 +0000 [MT] Processing step: IDEDistributionCreateDestRootStep
+2025-08-02 11:59:00 +0000 [MT] Processing step: IDEDistributionCopyItemStep
+2025-08-02 11:59:00 +0000 [MT] Running /usr/bin/ditto '-V' '/Users/meirwarcel/Snaps/build/SNAPS.xcarchive/Products/Applications/SNAPS.app' '/var/folders/t2/hr4b2fvj7s10pm7f_gkgjg6h0000gn/T/XcodeDistPipeline.~~~XWkpw7/Root/Payload/SNAPS.app'
+2025-08-02 11:59:00 +0000  >>> Copying /Users/meirwarcel/Snaps/build/SNAPS.xcarchive/Products/Applications/SNAPS.app 
+2025-08-02 11:59:00 +0000  copying file ./_CodeSignature/CodeResources ... 
+2025-08-02 11:59:00 +0000  2775 bytes for ./_CodeSignature/CodeResources
+2025-08-02 11:59:00 +0000  copying file ./AppIcon60x60@2x.png ... 
+2025-08-02 11:59:00 +0000  30144 bytes for ./AppIcon60x60@2x.png
+2025-08-02 11:59:00 +0000  copying file ./SNAPS ... 
+2025-08-02 11:59:00 +0000  1795616 bytes for ./SNAPS
+2025-08-02 11:59:00 +0000  copying file ./Assets.car ... 
+2025-08-02 11:59:00 +0000  4718271 bytes for ./Assets.car
+2025-08-02 11:59:00 +0000  copying file ./AppIcon76x76@2x~ipad.png ... 
+2025-08-02 11:59:00 +0000  47361 bytes for ./AppIcon76x76@2x~ipad.png
+2025-08-02 11:59:00 +0000  copying file ./embedded.mobileprovision ... 
+2025-08-02 11:59:00 +0000  16941 bytes for ./embedded.mobileprovision
+2025-08-02 11:59:00 +0000  copying file ./Info.plist ... 
+2025-08-02 11:59:00 +0000  1592 bytes for ./Info.plist
+2025-08-02 11:59:00 +0000  copying file ./PkgInfo ... 
+2025-08-02 11:59:00 +0000  8 bytes for ./PkgInfo
+2025-08-02 11:59:00 +0000 [MT] /usr/bin/ditto exited with 0
+2025-08-02 11:59:00 +0000 [MT] Processing step: IDEDistributionEmbedProfileStep
+2025-08-02 11:59:00 +0000 [MT] Processing step: IDEDistributionInfoPlistStep
+2025-08-02 11:59:00 +0000 [MT] Skipping step: IDEDistributionInfoPlistStep because it said so
+2025-08-02 11:59:00 +0000 [MT] Processing step: IDEDistributionAppThinningPlistStep
+2025-08-02 11:59:00 +0000 [MT] Skipping step: IDEDistributionAppThinningPlistStep because it said so
+2025-08-02 11:59:00 +0000 [MT] Processing step: IDEDistributionSymbolsStep
+2025-08-02 11:59:00 +0000 [MT] Skipping step: IDEDistributionSymbolsStep because it said so
+2025-08-02 11:59:00 +0000 [MT] Processing step: IDEDistributionAppThinningStep
+2025-08-02 11:59:00 +0000 [MT] Skipping step: IDEDistributionAppThinningStep because it said so
+2025-08-02 11:59:00 +0000 [MT] Processing step: IDEDistributionArchThinningStep
+2025-08-02 11:59:00 +0000 [MT] Item /Users/meirwarcel/Snaps/build/SNAPS.xcarchive/Products/Applications/SNAPS.app doesn't have the entitlement com.apple.developer.web-browser-engine.host enabled, returning ["arm64e"]
+2025-08-02 11:59:00 +0000 [MT] Archs to thin for item /Users/meirwarcel/Snaps/build/SNAPS.xcarchive/Products/Applications/SNAPS.app are ["arm64e"]
+2025-08-02 11:59:00 +0000 [MT] Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/t2/hr4b2fvj7s10pm7f_gkgjg6h0000gn/T/XcodeDistPipeline.~~~XWkpw7/Root/Payload/SNAPS.app/SNAPS' '-verify_arch' 'arm64e'
+2025-08-02 11:59:00 +0000 [MT] /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2025-08-02 11:59:00 +0000 [MT] Skipping architecture thinning for item "SNAPS" because arch "arm64e" wasn't found
+2025-08-02 11:59:00 +0000 [MT] Processing step: IDEDistributionODRStep
+2025-08-02 11:59:00 +0000 [MT] Processing step: IDEDistributionStripXattrsStep
+2025-08-02 11:59:00 +0000 [MT] Skipping stripping extended attributes because the codesign step will strip them.
+2025-08-02 11:59:00 +0000 [MT] Processing step: IDEDistributionCodesignStep
+2025-08-02 11:59:00 +0000 [MT] Entitlements for <IDEDistributionItem: 0x60000057f3c0; bundleID='com.example.snaps', path='<DVTFilePath:0x60000050eac0:'/Users/meirwarcel/Snaps/build/SNAPS.xcarchive/Products/Applications/SNAPS.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x6000002f45a0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60000141ec40; name='Apple Development: Meir Warcel (Y8STBMY7YA)', hash='C284D84B3BCDC6FA9E8F7647AC5F3083A6CAA9DD', serialNumber='2095C62A8C5EB9B28D4A83295F50759D', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2025-07-24 14:22:20 +0000''>', entitlements='{
+    "application-identifier" = "JMAQNZ88DW.com.example.snaps";
+    "com.apple.developer.team-identifier" = JMAQNZ88DW;
+    "get-task-allow" = 1;
+}', teamID='JMAQNZ88DW', identifier='com.example.snaps', executablePath='<DVTFilePath:0x60000057d7a0:'/Users/meirwarcel/Snaps/build/SNAPS.xcarchive/Products/Applications/SNAPS.app/SNAPS'>', hardenedRuntime='0'>'>: {
+    "application-identifier" = "JMAQNZ88DW.com.example.snaps";
+    "com.apple.developer.team-identifier" = JMAQNZ88DW;
+    "get-task-allow" = 1;
+}
+2025-08-02 11:59:00 +0000 [MT] Associated App Clip Identifiers Filter: Skipping because "com.apple.developer.associated-appclip-app-identifiers" is not present
+2025-08-02 11:59:00 +0000 [MT] Entitlements for <IDEDistributionItem: 0x60000057f3c0; bundleID='com.example.snaps', path='<DVTFilePath:0x60000050eac0:'/Users/meirwarcel/Snaps/build/SNAPS.xcarchive/Products/Applications/SNAPS.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x6000002f45a0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x600001438000; name='Apple Development: Meir Warcel (Y8STBMY7YA)', hash='C284D84B3BCDC6FA9E8F7647AC5F3083A6CAA9DD', serialNumber='2095C62A8C5EB9B28D4A83295F50759D', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2025-07-24 14:22:20 +0000''>', entitlements='{
+    "application-identifier" = "JMAQNZ88DW.com.example.snaps";
+    "com.apple.developer.team-identifier" = JMAQNZ88DW;
+    "get-task-allow" = 1;
+}', teamID='JMAQNZ88DW', identifier='com.example.snaps', executablePath='<DVTFilePath:0x60000057d7a0:'/Users/meirwarcel/Snaps/build/SNAPS.xcarchive/Products/Applications/SNAPS.app/SNAPS'>', hardenedRuntime='0'>'> are: {
+    "application-identifier" = "JMAQNZ88DW.com.example.snaps";
+    "com.apple.developer.team-identifier" = JMAQNZ88DW;
+    "get-task-allow" = 1;
+}
+2025-08-02 11:59:00 +0000 [MT] Writing entitlements for <IDEDistributionItem: 0x60000057f3c0; bundleID='com.example.snaps', path='<DVTFilePath:0x60000050eac0:'/Users/meirwarcel/Snaps/build/SNAPS.xcarchive/Products/Applications/SNAPS.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x6000002f45a0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x600001438300; name='Apple Development: Meir Warcel (Y8STBMY7YA)', hash='C284D84B3BCDC6FA9E8F7647AC5F3083A6CAA9DD', serialNumber='2095C62A8C5EB9B28D4A83295F50759D', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2025-07-24 14:22:20 +0000''>', entitlements='{
+    "application-identifier" = "JMAQNZ88DW.com.example.snaps";
+    "com.apple.developer.team-identifier" = JMAQNZ88DW;
+    "get-task-allow" = 1;
+}', teamID='JMAQNZ88DW', identifier='com.example.snaps', executablePath='<DVTFilePath:0x60000057d7a0:'/Users/meirwarcel/Snaps/build/SNAPS.xcarchive/Products/Applications/SNAPS.app/SNAPS'>', hardenedRuntime='0'>'> to: /var/folders/t2/hr4b2fvj7s10pm7f_gkgjg6h0000gn/T/XcodeDistPipeline.~~~XWkpw7/entitlements~~~1juE0j
+2025-08-02 11:59:00 +0000 [MT] invoking codesign: <NSConcreteTask: 0x600000133160; launchPath='/usr/bin/codesign', arguments='(
+    "-f",
+    "-s",
+    C284D84B3BCDC6FA9E8F7647AC5F3083A6CAA9DD,
+    "--entitlements",
+    "/var/folders/t2/hr4b2fvj7s10pm7f_gkgjg6h0000gn/T/XcodeDistPipeline.~~~XWkpw7/entitlements~~~1juE0j",
+    "--preserve-metadata=identifier,flags,runtime",
+    "--generate-entitlement-der",
+    "--strip-disallowed-xattrs",
+    "-vvv",
+    "/var/folders/t2/hr4b2fvj7s10pm7f_gkgjg6h0000gn/T/XcodeDistPipeline.~~~XWkpw7/Root/Payload/SNAPS.app"
+)'>
+2025-08-02 11:59:00 +0000 [MT] codesign output: /var/folders/t2/hr4b2fvj7s10pm7f_gkgjg6h0000gn/T/XcodeDistPipeline.~~~XWkpw7/Root/Payload/SNAPS.app: replacing existing signature
+/var/folders/t2/hr4b2fvj7s10pm7f_gkgjg6h0000gn/T/XcodeDistPipeline.~~~XWkpw7/Root/Payload/SNAPS.app: signed app bundle with Mach-O thin (arm64) [com.example.snaps]
+2025-08-02 11:59:00 +0000 [MT] Processing step: IDEDistributionZipODRItemStep
+2025-08-02 11:59:00 +0000 [MT] Skipping step: IDEDistributionZipODRItemStep because it said so
+2025-08-02 11:59:00 +0000 [MT] Processing step: IDEDistributionCreateIPAStep
+2025-08-02 11:59:00 +0000 [MT] Running /usr/bin/ditto '-V' '-c' '-k' '--norsrc' '/var/folders/t2/hr4b2fvj7s10pm7f_gkgjg6h0000gn/T/XcodeDistPipeline.~~~XWkpw7/Root' '/var/folders/t2/hr4b2fvj7s10pm7f_gkgjg6h0000gn/T/XcodeDistPipeline.~~~XWkpw7/Packages/SNAPS.ipa'
+2025-08-02 11:59:00 +0000  >>> Copying /var/folders/t2/hr4b2fvj7s10pm7f_gkgjg6h0000gn/T/XcodeDistPipeline.~~~XWkpw7/Root 
+2025-08-02 11:59:00 +0000  copying file ./Payload/SNAPS.app/_CodeSignature/CodeResources ... 
+2025-08-02 11:59:00 +0000  2775 bytes for ./Payload/SNAPS.app/_CodeSignature/CodeResources
+2025-08-02 11:59:00 +0000  copying file ./Payload/SNAPS.app/AppIcon60x60@2x.png ... 
+2025-08-02 11:59:00 +0000  30144 bytes for ./Payload/SNAPS.app/AppIcon60x60@2x.png
+2025-08-02 11:59:00 +0000  copying file ./Payload/SNAPS.app/SNAPS ... 
+2025-08-02 11:59:00 +0000  1795616 bytes for ./Payload/SNAPS.app/SNAPS
+2025-08-02 11:59:00 +0000  copying file ./Payload/SNAPS.app/Assets.car ... 
+2025-08-02 11:59:01 +0000  4718271 bytes for ./Payload/SNAPS.app/Assets.car
+2025-08-02 11:59:01 +0000  copying file ./Payload/SNAPS.app/AppIcon76x76@2x~ipad.png ... 
+2025-08-02 11:59:01 +0000  47361 bytes for ./Payload/SNAPS.app/AppIcon76x76@2x~ipad.png
+2025-08-02 11:59:01 +0000  copying file ./Payload/SNAPS.app/embedded.mobileprovision ... 
+2025-08-02 11:59:01 +0000  16941 bytes for ./Payload/SNAPS.app/embedded.mobileprovision
+2025-08-02 11:59:01 +0000  copying file ./Payload/SNAPS.app/Info.plist ... 
+2025-08-02 11:59:01 +0000  1592 bytes for ./Payload/SNAPS.app/Info.plist
+copying file ./Payload/SNAPS.app/PkgInfo ... 
+8 bytes for ./Payload/SNAPS.app/PkgInfo
+2025-08-02 11:59:01 +0000 [MT] /usr/bin/ditto exited with 0
+2025-08-02 11:59:01 +0000 [MT] Processing step: IDEDistributionAppStoreInformationStep
+2025-08-02 11:59:01 +0000 [MT] Skipping step: IDEDistributionAppStoreInformationStep because it said so
+2025-08-02 11:59:01 +0000 [MT] Processing step: IDEDistributionGenerateProcessedDistributionItems
+2025-08-02 11:59:01 +0000 [MT] IDEDistributionItem init <DVTFilePath:0x6000005cfba0:'/var/folders/t2/hr4b2fvj7s10pm7f_gkgjg6h0000gn/T/XcodeDistPipeline.~~~XWkpw7/Root/Payload/SNAPS.app'>
+2025-08-02 11:59:01 +0000 [MT] Processing step: IDEDistributionCreateManifestStep
