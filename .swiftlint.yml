@@ -1,0 +1,85 @@
+# SwiftLint Configuration File
+# https://github.com/realm/SwiftLint/blob/main/README.md#configuration
+
+# Disable rules that are too aggressive or not applicable to this project
+disabled_rules:
+  - trailing_whitespace
+  - line_length
+  - function_body_length
+  - type_body_length
+  - file_length
+  - identifier_name
+  - cyclomatic_complexity
+
+# Enable rules that are useful for code quality
+opt_in_rules:
+  - array_init
+  - collection_alignment
+  - contains_over_filter_is_empty
+  - contains_over_filter_count
+  - contains_over_first_not_nil
+  - empty_count
+  - empty_string
+  - empty_collection_literal
+  - enum_case_associated_values_count
+  - fatal_error_message
+  - first_where
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - last_where
+  - legacy_random
+  - literal_expression_end_indentation
+  - multiline_parameters
+  - nimble_operator
+  - operator_usage_whitespace
+  - overridden_super_call
+  - pattern_matching_keywords
+  - prefer_self_type_over_type_of_self
+  - redundant_nil_coalescing
+  - redundant_type_annotation
+  - sorted_imports
+  - static_operator
+  - toggle_bool
+  - unneeded_override
+  - unused_import
+  - vertical_parameter_alignment_on_call
+  - yoda_condition
+
+# Configure rule severity levels
+rule_configurations:
+  # Customize specific rules
+  type_name:
+    min_length: 3
+    max_length: 40
+  
+  identifier_name:
+    min_length: 2
+    max_length: 40
+    excluded:
+      - id
+      - URL
+      - x
+      - y
+      - z
+
+  # Allow force unwrapping in specific cases
+  force_unwrapping:
+    severity: warning
+
+  # Allow implicitly unwrapped optionals in certain contexts
+  implicitly_unwrapped_optional:
+    severity: warning
+
+# Exclude build artifacts and generated files
+excluded:
+  - Carthage
+  - Pods
+  - fastlane
+  - .build
+  - build
+  - DerivedData
+  - *.generated.swift
+
+# Custom rules (if needed)
+custom_rules:
+  # Add custom rules here if needed

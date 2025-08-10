@@ -579,6 +579,7 @@ struct PhotoReviewCard: View {
         }
     }
     
+    @MainActor
     private func loadDuplicates() {
         // Get the current photo data from the service (with predictions)
         guard let currentPhoto = quickScanService.results.first(where: { $0.id == photo.id }) else {
