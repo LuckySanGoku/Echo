@@ -146,3 +146,7 @@ logs/
 
 # Claude AI
 .claude/
+
+# Xcode user data
+xcuserdata/
+*.xcuserstate
