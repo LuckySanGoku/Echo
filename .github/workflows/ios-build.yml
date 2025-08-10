@@ -18,27 +18,28 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+
           # Prefer Echo.xcodeproj, else SNAPS.xcodeproj, else first found
           if [[ -e Echo.xcodeproj ]]; then PROJECT="Echo.xcodeproj"
           elif [[ -e SNAPS.xcodeproj ]]; then PROJECT="SNAPS.xcodeproj"
-          else PROJECT="$(find . -maxdepth 3 -type d -name '*.xcodeproj' | head -n1)"; fi
-          [[ -z "$PROJECT" ]] && { echo "::error ::No .xcodeproj found"; exit 1; }
+          else PROJECT="$(find . -maxdepth 3 -type d -name '*.xcodeproj' | head -n1 || true)"; fi
+          [[ -z "${PROJECT:-}" ]] && { echo "::error ::No .xcodeproj found"; exit 1; }
 
-          # Get Targets block, trim whitespace, drop empty + test targets
+          # Extract Targets block, trim whitespace, drop empties and *Tests/UITests
           TARGETS=$(/usr/bin/xcodebuild -list -project "$PROJECT" 2>/dev/null | \
-            awk '/Targets:/{f=1;next} /Build Configurations:/{f=0} f' | \
+            awk '/Targets:/{on=1;next} /Build Configurations:/{on=0} on' | \
             sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | \
-            grep -v -E '^(|.*Tests|.*UITests)$' || true)
+            awk 'NF && $0 !~ /(Tests|UITests)$/' || true)
 
-          # Choose: Echo > SNAPS > first
-          if echo "$TARGETS" | grep -Fxq 'Echo'; then TARGET='Echo'
-          elif echo "$TARGETS" | grep -Fxq 'SNAPS'; then TARGET='SNAPS'
-          else TARGET="$(echo "$TARGETS" | head -n1)"; fi
+          echo "Targets seen:"
+          printf "%s\n" "$TARGETS"
 
-          if [[ -z "${TARGET:-}" ]]; then
-            echo "::error ::Could not detect a buildable target. Targets seen: [$TARGETS]"
-            exit 1
-          fi
+          # Choose target: Echo > SNAPS > first non-test
+          if printf "%s\n" "$TARGETS" | grep -Fxq 'Echo'; then TARGET='Echo'
+          elif printf "%s\n" "$TARGETS" | grep -Fxq 'SNAPS'; then TARGET='SNAPS'
+          else TARGET="$(printf "%s\n" "$TARGETS" | head -n1)"; fi
+
+          [[ -z "${TARGET:-}" ]] && { echo "::error ::Could not detect a buildable target."; exit 1; }
 
           echo "project=$PROJECT" >> "$GITHUB_OUTPUT"
           echo "target=$TARGET"   >> "$GITHUB_OUTPUT"
