@@ -13,23 +13,39 @@ jobs:
       - name: Select Xcode
         run: sudo xcode-select -s "/Applications/Xcode.app"
 
-      - name: Detect project and target
+      - name: Detect project / target / scheme
         id: detect
         shell: bash
         run: |
-          set -e
-          PROJECT=$(ls *.xcodeproj | { grep -E 'Echo\.xcodeproj|SNAPS\.xcodeproj' || cat; } | head -n1)
+          set -euo pipefail
+          PROJECT="$(find . -maxdepth 4 -type d -name '*.xcodeproj' | head -n1 || true)"
+          if [[ -z "$PROJECT" ]]; then
+            echo "::error ::No .xcodeproj found in repo"; ls -R; exit 1
+          fi
+          TARGET=$(/usr/bin/xcodebuild -list -project "$PROJECT" 2>/dev/null | awk '/Targets:/{f=1;next} f&&NF{print; exit}')
+          SCHEME=$(/usr/bin/xcodebuild -list -project "$PROJECT" 2>/dev/null | awk '/Schemes:/{f=1;next} f&&NF{print; exit}')
           echo "project=$PROJECT" >> "$GITHUB_OUTPUT"
-          TARGET=$(/usr/bin/xcodebuild -list -project "$PROJECT" | awk '/Targets:/{f=1;next} f&&NF{print;exit}')
-          echo "target=$TARGET" >> "$GITHUB_OUTPUT"
-          echo "Detected project: $PROJECT"
-          echo "Detected target:  $TARGET"
+          echo "target=$TARGET"   >> "$GITHUB_OUTPUT"
+          echo "scheme=$SCHEME"   >> "$GITHUB_OUTPUT"
+          echo "Detected: project=$PROJECT target=$TARGET scheme=$SCHEME"
 
-      - name: Build (Debug, generic simulator)
+      - name: Build (Debug, generic iOS Simulator)
+        shell: bash
         run: |
-          xcodebuild \
-            -project "${{ steps.detect.outputs.project }}" \
-            -target  "${{ steps.detect.outputs.target }}" \
-            -configuration Debug \
-            -destination "generic/platform=iOS Simulator" \
-            build
+          set -euo pipefail
+          PROJ="${{ steps.detect.outputs.project }}"
+          TGT="${{ steps.detect.outputs.target }}"
+          SCM="${{ steps.detect.outputs.scheme }}"
+          if [[ -n "$TGT" ]]; then
+            xcodebuild -project "$PROJ" -target "$TGT" -configuration Debug \
+              -destination "generic/platform=iOS Simulator" \
+              CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+              build
+          elif [[ -n "$SCM" ]]; then
+            xcodebuild -project "$PROJ" -scheme "$SCM" -configuration Debug \
+              -destination "generic/platform=iOS Simulator" \
+              CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+              build
+          else
+            echo "::error ::No target or scheme detected"; exit 1
+          fi
