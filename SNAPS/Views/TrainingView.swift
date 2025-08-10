@@ -12,6 +12,9 @@ struct TrainingView: View {
     // Memory management
     @State private var didReceiveMemoryWarning = false
     
+    // Track when new photos are loaded
+    @State private var lastKnownPhotoCount = 0
+    
     // Get unrated photos for training - keep array stable during training
     private var unratedPhotos: [PhotoScanResult] {
         return quickScanService.results.filter { $0.tags.contains(.unrated) }
@@ -171,8 +174,29 @@ struct TrainingView: View {
                 PhotoReviewCard.clearImageCache()
                 print("🧹 PhotoReviewCard cache cleared via notification")
             }
-        }
-        .sheet(isPresented: $showingCorrection) {
+            .onReceive(quickScanService.$results) { newResults in
+                // Check if new photos were loaded
+                if newResults.count > lastKnownPhotoCount {
+                    let newCount = newResults.count - lastKnownPhotoCount
+                    print("📸 New photos loaded: \(newCount) (total: \(newResults.count))")
+                    lastKnownPhotoCount = newResults.count
+                    
+                    // If we're at the end of current photos, check if we can continue
+                    if currentIndex >= unratedPhotos.count - 1 {
+                        print("🔄 At end of current batch, checking for more photos...")
+                        // Trigger a check for more photos
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            checkAndTriggerPreload()
+                        }
+                    }
+                }
+            }
+            .onAppear {
+                // Initialize photo count tracking
+                lastKnownPhotoCount = quickScanService.results.count
+                print("🎯 Training view appeared with \(lastKnownPhotoCount) photos")
+            }
+            .sheet(isPresented: $showingCorrection) {
             if let photo = currentPhoto {
                 CorrectionView(
                     photo: photo,
@@ -185,7 +209,10 @@ struct TrainingView: View {
                 )
             }
         }
-    }
+        } // Missing closing brace for NavigationView
+    } // Closing brace for body property
+    
+    // MARK: - Helper Methods
     
     private func handleCorrectFeedback() {
         let timestamp = DateFormatter.timestampFormatter.string(from: Date())
@@ -257,10 +284,35 @@ struct TrainingView: View {
             nextIndex += 1
         }
         
-        // No more unrated photos found - training complete
-        print("\(timestamp) 🔄 Training session complete - finalizing")
-        quickScanService.finalizeTrainingSession()
-        dismiss()
+        // No more unrated photos in current batch - check if we're scanning for more
+        if quickScanService.isScanning {
+            print("\(timestamp) 🔄 Waiting for more photos to be scanned...")
+            // Don't end training - wait for more photos to be loaded
+            return
+        }
+        
+        // Check if there are more photos in the library that haven't been scanned yet
+        let totalPhotosInLibrary = PHAsset.fetchAssets(with: nil).count
+        let scannedPhotos = quickScanService.results.count
+        
+        if scannedPhotos < totalPhotosInLibrary {
+            print("\(timestamp) 🔄 More photos available in library (\(scannedPhotos)/\(totalPhotosInLibrary)) - triggering scan...")
+            // Trigger a scan to get more photos
+            Task {
+                await quickScanService.preloadNextBatch()
+            }
+            return
+        }
+        
+        // Only end training if we've scanned all photos and rated all unrated ones
+        let remainingUnrated = unratedPhotos.filter { !isPhotoRated($0.asset.localIdentifier) }.count
+        if remainingUnrated == 0 {
+            print("\(timestamp) 🔄 Training session complete - all photos rated")
+            quickScanService.finalizeTrainingSession()
+            dismiss()
+        } else {
+            print("\(timestamp) 🔄 Still have \(remainingUnrated) unrated photos - continuing training")
+        }
     }
     
     private func navigateToPrevious() {
@@ -280,11 +332,23 @@ struct TrainingView: View {
         
         print("\(timestamp) 📦 Preload check: \(unratedCount) unrated photos remaining")
         
-        // Trigger preload when we have 4 or fewer unrated photos remaining
-        if unratedCount <= 4 && !quickScanService.isScanning {
+        // Trigger preload when we have 6 or fewer unrated photos remaining (increased from 4)
+        if unratedCount <= 6 && !quickScanService.isScanning {
             print("\(timestamp) 🚀 PRELOAD TRIGGERED: Only \(unratedCount) unrated photos left, loading next batch...")
             
             // Trigger background preload
+            Task {
+                await quickScanService.preloadNextBatch()
+            }
+        }
+        
+        // Also trigger preload if we're getting close to the end of the current batch
+        let currentBatchSize = unratedPhotos.count
+        let remainingInBatch = currentBatchSize - currentIndex
+        
+        if remainingInBatch <= 3 && !quickScanService.isScanning {
+            print("\(timestamp) 🚀 PRELOAD TRIGGERED: Only \(remainingInBatch) photos left in current batch, loading next batch...")
+            
             Task {
                 await quickScanService.preloadNextBatch()
             }
