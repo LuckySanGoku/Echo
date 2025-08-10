@@ -19,4 +19,3 @@ jobs:
             -destination "generic/platform=iOS Simulator" \
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
             build
-EOF < /dev/null
