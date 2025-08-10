@@ -110,6 +110,8 @@
 				7B01234512345678901234A2 /* Sources */,
 				7B01234512345678901234A3 /* Frameworks */,
 				7B01234512345678901234A4 /* Resources */,
+				749549A52E4885FE004BAF33 /* Run SwiftLint */,
+				749549A62E48868E004BAF33 /* Run SwiftFormat */,
 			);
 			buildRules = (
 			);
@@ -144,6 +146,8 @@
 				Base,
 			);
 			mainGroup = 7B0123451234567890123499;
+			packageReferences = (
+			);
 			productRefGroup = 7B01234512345678901234A7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -163,6 +167,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		749549A52E4885FE004BAF33 /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "  # SwiftLint\n  if [[ \"$(uname -m)\" == arm64 ]]; then\n      export PATH=\"/opt/homebrew/bin:$PATH\"\n  fi\n\n  if which swiftlint > /dev/null; then\n      swiftlint\n  elif command -v mint > /dev/null; then\n      mint run realm/SwiftLint swiftlint\n  else\n      echo \"warning: SwiftLint not installed. Install via: brew install swiftlint\"\n      exit 0\n  fi\n";
+		};
+		749549A62E48868E004BAF33 /* Run SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftFormat";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# SwiftFormat\n  if [[ \"$(uname -m)\" == arm64 ]]; then\n      export PATH=\"/opt/homebrew/bin:$PATH\"\n  fi\n\n  if which swiftformat > /dev/null; then\n      swiftformat --config \"${SRCROOT}/.swiftformat\" \"${SRCROOT}/SNAPS\"\n  elif command -v mint > /dev/null; then\n      mint run nicklockwood/SwiftFormat swiftformat --config \"${SRCROOT}/.swiftformat\"\n  \"${SRCROOT}/SNAPS\"\n  else\n      echo \"warning: SwiftFormat not installed. Install via: brew install swiftformat\"\n      exit 0\n  fi\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7B01234512345678901234A2 /* Sources */ = {
