@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B01234512345678901234AA /* SnapsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B01234512345678901234A9 /* SnapsApp.swift */; };
+		7B01234512345678901234AA /* EchoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B01234512345678901234A9 /* EchoApp.swift */; };
 		7B01234512345678901234BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B01234512345678901234BA /* ContentView.swift */; };
 		7B01234512345678901234CC /* PhotoModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B01234512345678901234CB /* PhotoModels.swift */; };
 		7B01234512345678901234DD /* QuickScanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B01234512345678901234DC /* QuickScanService.swift */; };
@@ -19,8 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7B01234512345678901234A6 /* SNAPS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNAPS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B01234512345678901234A9 /* SnapsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapsApp.swift; sourceTree = "<group>"; };
+		7B01234512345678901234A6 /* Echo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Echo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B01234512345678901234A9 /* EchoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EchoApp.swift; sourceTree = "<group>"; };
 		7B01234512345678901234BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7B01234512345678901234CB /* PhotoModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModels.swift; sourceTree = "<group>"; };
 		7B01234512345678901234DC /* QuickScanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickScanService.swift; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 		7B0123451234567890123499 = {
 			isa = PBXGroup;
 			children = (
-				7B01234512345678901234A8 /* SNAPS */,
+				7B01234512345678901234A8 /* Echo */,
 				7B01234512345678901234A7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,15 +54,15 @@
 		7B01234512345678901234A7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7B01234512345678901234A6 /* SNAPS.app */,
+				7B01234512345678901234A6 /* Echo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7B01234512345678901234A8 /* SNAPS */ = {
+		7B01234512345678901234A8 /* Echo */ = {
 			isa = PBXGroup;
 			children = (
-				7B01234512345678901234A9 /* SnapsApp.swift */,
+				7B01234512345678901234A9 /* EchoApp.swift */,
 				7B01234512345678901234BA /* ContentView.swift */,
 				7B01234512345678901234KK /* Models */,
 				7B01234512345678901234LL /* Services */,
@@ -70,7 +70,7 @@
 				7B01234512345678901234FE /* Assets.xcassets */,
 				7B01234512345678901234GG /* Info.plist */,
 			);
-			path = SNAPS;
+			path = Echo;
 			sourceTree = "<group>";
 		};
 		7B01234512345678901234KK /* Models */ = {
@@ -103,9 +103,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7B01234512345678901234A5 /* SNAPS */ = {
+		7B01234512345678901234A5 /* Echo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7B01234512345678901234B4 /* Build configuration list for PBXNativeTarget "SNAPS" */;
+			buildConfigurationList = 7B01234512345678901234B4 /* Build configuration list for PBXNativeTarget "Echo" */;
 			buildPhases = (
 				7B01234512345678901234A2 /* Sources */,
 				7B01234512345678901234A3 /* Frameworks */,
@@ -115,9 +115,9 @@
 			);
 			dependencies = (
 			);
-			name = SNAPS;
-			productName = SNAPS;
-			productReference = 7B01234512345678901234A6 /* SNAPS.app */;
+			name = Echo;
+			productName = Echo;
+			productReference = 7B01234512345678901234A6 /* Echo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -135,7 +135,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7B0123451234567890123497 /* Build configuration list for PBXProject "SNAPS" */;
+			buildConfigurationList = 7B0123451234567890123497 /* Build configuration list for PBXProject "Echo" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -148,7 +148,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7B01234512345678901234A5 /* SNAPS */,
+				7B01234512345678901234A5 /* Echo */,
 			);
 		};
 /* End PBXProject section */
@@ -170,7 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B01234512345678901234BB /* ContentView.swift in Sources */,
-				7B01234512345678901234AA /* SnapsApp.swift in Sources */,
+				7B01234512345678901234AA /* EchoApp.swift in Sources */,
 				7B01234512345678901234CC /* PhotoModels.swift in Sources */,
 				7B01234512345678901234DD /* QuickScanService.swift in Sources */,
 				7B01234512345678901234EE /* LearningService.swift in Sources */,
@@ -313,7 +313,7 @@
 				DEVELOPMENT_TEAM = JMAQNZ88DW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SNAPS/Info.plist;
+				INFOPLIST_FILE = Echo/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs access to your photo library to scan and organize your photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -326,7 +326,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.snaps;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.echo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -345,7 +345,7 @@
 				DEVELOPMENT_TEAM = JMAQNZ88DW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SNAPS/Info.plist;
+				INFOPLIST_FILE = Echo/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs access to your photo library to scan and organize your photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -358,7 +358,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.snaps;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.echo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -369,7 +369,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7B0123451234567890123497 /* Build configuration list for PBXProject "SNAPS" */ = {
+		7B0123451234567890123497 /* Build configuration list for PBXProject "Echo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B01234512345678901234B2 /* Debug */,
@@ -378,7 +378,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7B01234512345678901234B4 /* Build configuration list for PBXNativeTarget "SNAPS" */ = {
+		7B01234512345678901234B4 /* Build configuration list for PBXNativeTarget "Echo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B01234512345678901234B5 /* Debug */,

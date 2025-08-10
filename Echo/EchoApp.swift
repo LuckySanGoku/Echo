@@ -4,7 +4,7 @@ import SwiftUI
 // for user approval. See .claude.md for full instructions.
 
 @main
-struct SnapsApp: App {
+struct EchoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

@@ -21,7 +21,7 @@ Based on my review:
 Here's a minimal claude.md based on the ACTUAL current state:
 
 ```markdown
-# SNAPS Project - Current Status
+# Echo Project - Current Status
 
 ## What It Is
 iOS photo cleanup app with ML learning that adapts classification thresholds based on user feedback during training.

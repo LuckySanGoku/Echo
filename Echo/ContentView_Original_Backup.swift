@@ -524,7 +524,7 @@ struct DashboardView: View {
                 }
             }
             .padding()
-            .navigationTitle("Snaps")
+            .navigationTitle("Echo")
         }
     }
 }
@@ -3114,7 +3114,7 @@ struct ModernDashboardView: View {
                 .padding(.vertical)
             }
             .background(Color(UIColor.systemGroupedBackground))
-            .navigationTitle("SNAPS")
+            .navigationTitle("Echo")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {

@@ -44,7 +44,7 @@ struct ModernDashboardView: View {
                 .padding(.vertical)
             }
             .background(Color(UIColor.systemGroupedBackground))
-            .navigationTitle("SNAPS")
+            .navigationTitle("Echo")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {

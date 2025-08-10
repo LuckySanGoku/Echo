@@ -1,14 +1,14 @@
-# SNAPS UI Refactoring Summary
+# Echo UI Refactoring Summary
 
 ## What I've Done
-I've created a completely redesigned UI for the SNAPS app to address the UX issues you mentioned. The new design focuses on:
+I've created a completely redesigned UI for the Echo app to address the UX issues you mentioned. The new design focuses on:
 - Clean, card-based interfaces
 - One photo at a time during training (no more scrolling!)
 - Smart duplicate grouping
 - Modern iOS design with animations and haptics
 
 ## New Files Created
-Located in `/Users/meirwarcel/Snaps/SNAPS/Views/`:
+Located in `/Users/meirwarcel/Snaps/Echo/Views/`:
 1. **TrainingView.swift** - New training interface with swipe navigation
 2. **ModernDashboardView.swift** - Redesigned dashboard with progress visualization
 3. **ModernCleanupView.swift** - Improved cleanup view with category filtering

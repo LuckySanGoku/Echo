@@ -580,9 +580,10 @@ struct PhotoReviewCard: View {
     }
     
     private func loadDuplicates() {
-        // Get the current photo data from the service (with predictions)
+        // CRITICAL: Always get fresh photo data from the service, not the stale prop
         guard let currentPhoto = quickScanService.results.first(where: { $0.id == photo.id }) else {
             print("🔍 Could not find photo in results")
+            duplicates = []
             return
         }
         
@@ -590,7 +591,7 @@ struct PhotoReviewCard: View {
         print("  - Has duplicate in predicted: \(currentPhoto.predictedTags.contains(.duplicate))")
         print("  - Has duplicate in tags: \(currentPhoto.tags.contains(.duplicate))")
         
-        // Check both predicted and regular tags on the CURRENT photo
+        // Check both predicted and regular tags on the FRESH photo
         guard currentPhoto.predictedTags.contains(.duplicate) || currentPhoto.tags.contains(.duplicate) else { 
             duplicates = []
             return 
