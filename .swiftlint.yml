@@ -1,27 +1,32 @@
-# SwiftLint Configuration File
-# https://github.com/realm/SwiftLint/blob/main/README.md#configuration
+# SwiftLint Configuration for Echo
+# https://github.com/realm/SwiftLint
 
-# Disable rules that are too aggressive or not applicable to this project
-disabled_rules:
-  - trailing_whitespace
-  - line_length
-  - function_body_length
-  - type_body_length
-  - file_length
-  - identifier_name
-  - cyclomatic_complexity
+# Rules to include
+included:
+  - SNAPS
 
-# Enable rules that are useful for code quality
+# Rules to exclude
+excluded:
+  - build
+  - DerivedData
+  - .build
+  - Pods
+
+# Enabled rules
 opt_in_rules:
   - array_init
+  - attributes
+  - closure_end_indentation
+  - closure_spacing
   - collection_alignment
-  - contains_over_filter_is_empty
   - contains_over_filter_count
-  - contains_over_first_not_nil
+  - empty_collection_literal
   - empty_count
   - empty_string
-  - empty_collection_literal
   - enum_case_associated_values_count
+  - explicit_init
+  - extension_access_modifier
+  - fallthrough
   - fatal_error_message
   - first_where
   - force_unwrapping
@@ -29,57 +34,59 @@ opt_in_rules:
   - last_where
   - legacy_random
   - literal_expression_end_indentation
+  - multiline_arguments
+  - multiline_function_chains
+  - multiline_literal_brackets
   - multiline_parameters
-  - nimble_operator
+  - number_separator
   - operator_usage_whitespace
   - overridden_super_call
   - pattern_matching_keywords
   - prefer_self_type_over_type_of_self
   - redundant_nil_coalescing
   - redundant_type_annotation
-  - sorted_imports
-  - static_operator
+  - strict_fileprivate
+  - switch_case_alignment
   - toggle_bool
-  - unneeded_override
+  - trailing_closure
+  - unneeded_parentheses_in_closure_argument
   - unused_import
-  - vertical_parameter_alignment_on_call
+  - unused_private_declaration
+  - vertical_whitespace_closing_braces
+  - vertical_whitespace_opening_braces
   - yoda_condition
 
-# Configure rule severity levels
-rule_configurations:
-  # Customize specific rules
-  type_name:
-    min_length: 3
-    max_length: 40
-  
-  identifier_name:
-    min_length: 2
-    max_length: 40
-    excluded:
-      - id
-      - URL
-      - x
-      - y
-      - z
+# Disabled rules
+disabled_rules:
+  - todo
+  - identifier_name
+  - nesting
 
-  # Allow force unwrapping in specific cases
-  force_unwrapping:
-    severity: warning
+# Rule configurations
+line_length:
+  warning: 120
+  error: 150
+  ignores_urls: true
+  ignores_function_declarations: true
+  ignores_comments: true
 
-  # Allow implicitly unwrapped optionals in certain contexts
-  implicitly_unwrapped_optional:
-    severity: warning
+function_body_length:
+  warning: 60
+  error: 100
 
-# Exclude build artifacts and generated files
-excluded:
-  - Carthage
-  - Pods
-  - fastlane
-  - .build
-  - build
-  - DerivedData
-  - *.generated.swift
+function_parameter_count:
+  warning: 6
+  error: 8
 
-# Custom rules (if needed)
-custom_rules:
-  # Add custom rules here if needed
+type_body_length:
+  warning: 300
+  error: 500
+
+file_length:
+  warning: 500
+  error: 1000
+
+cyclomatic_complexity:
+  warning: 10
+  error: 20
+EOF < /dev/null
