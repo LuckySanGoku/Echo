@@ -9,11 +9,11 @@ jobs:
       - uses: actions/checkout@v4
       - name: Select Xcode
         run: sudo xcode-select -s "/Applications/Xcode.app"
-      - name: Build SNAPS (Debug, simulator, no signing)
+      - name: Build Echo (Debug, simulator, no signing)
         run: |
           xcodebuild \
-            -project "SNAPS.xcodeproj" \
-            -target  "SNAPS" \
+            -project "Echo.xcodeproj" \
+            -scheme  "Echo" \
             -configuration Debug \
             -sdk iphonesimulator \
             -destination "generic/platform=iOS Simulator" \
