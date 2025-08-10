@@ -4,7 +4,7 @@ A modern iOS application built with Swift and SwiftUI.
 
 ## Description
 
-Echo is an iOS app designed to provide a seamless user experience with modern Swift development practices.
+Echo is a modern iOS photo cleanup app that uses machine learning to help organize and manage your photo library. The app features intelligent duplicate detection, blur analysis, screenshot identification, and adaptive learning based on user feedback.
 
 ## Tech Stack
 
@@ -110,4 +110,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - SwiftUI community
 - Apple Developer Documentation
 - iOS development community
-# trigger CI
+
+## Build Status
+
+![iOS Build](https://github.com/LuckySanGoku/Echo/actions/workflows/ios-build.yml/badge.svg)

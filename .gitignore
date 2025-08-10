@@ -150,3 +150,15 @@ logs/
 # Xcode user data
 xcuserdata/
 *.xcuserstate
+
+# Xcode build artifacts  
+build/
+DerivedData/
+*.app
+*.ipa
+*.dSYM*
+*.mobileprovision
+
+# Swift Package Manager
+.swiftpm/
+Package.resolved
