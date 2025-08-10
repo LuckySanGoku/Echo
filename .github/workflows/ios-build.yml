@@ -9,13 +9,13 @@ jobs:
       - uses: actions/checkout@v4
       - name: Select Xcode
         run: sudo xcode-select -s "/Applications/Xcode.app"
-      - name: Build Echo (Debug, simulator, no signing)
+      - name: Build Echo (Debug, device, no signing)
         run: |
           xcodebuild \
             -project "Echo.xcodeproj" \
             -scheme  "Echo" \
             -configuration Debug \
-            -sdk iphonesimulator \
-            -destination "generic/platform=iOS Simulator" \
+            -sdk iphoneos \
+            -destination "generic/platform=iOS" \
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
             build
