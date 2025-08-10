@@ -13,39 +13,46 @@ jobs:
       - name: Select Xcode
         run: sudo xcode-select -s "/Applications/Xcode.app"
 
-      - name: Detect project / target / scheme
+      - name: Detect project / target (trim + prefer app target)
         id: detect
         shell: bash
         run: |
           set -euo pipefail
-          PROJECT="$(find . -maxdepth 4 -type d -name '*.xcodeproj' | head -n1 || true)"
-          if [[ -z "$PROJECT" ]]; then
-            echo "::error ::No .xcodeproj found in repo"; ls -R; exit 1
+          # Prefer Echo.xcodeproj, else SNAPS.xcodeproj, else first found
+          if [[ -e Echo.xcodeproj ]]; then PROJECT="Echo.xcodeproj"
+          elif [[ -e SNAPS.xcodeproj ]]; then PROJECT="SNAPS.xcodeproj"
+          else PROJECT="$(find . -maxdepth 3 -type d -name '*.xcodeproj' | head -n1)"; fi
+          [[ -z "$PROJECT" ]] && { echo "::error ::No .xcodeproj found"; exit 1; }
+
+          # Get Targets block, trim whitespace, drop empty + test targets
+          TARGETS=$(/usr/bin/xcodebuild -list -project "$PROJECT" 2>/dev/null | \
+            awk '/Targets:/{f=1;next} /Build Configurations:/{f=0} f' | \
+            sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | \
+            grep -v -E '^(|.*Tests|.*UITests)$' || true)
+
+          # Choose: Echo > SNAPS > first
+          if echo "$TARGETS" | grep -Fxq 'Echo'; then TARGET='Echo'
+          elif echo "$TARGETS" | grep -Fxq 'SNAPS'; then TARGET='SNAPS'
+          else TARGET="$(echo "$TARGETS" | head -n1)"; fi
+
+          if [[ -z "${TARGET:-}" ]]; then
+            echo "::error ::Could not detect a buildable target. Targets seen: [$TARGETS]"
+            exit 1
           fi
-          TARGET=$(/usr/bin/xcodebuild -list -project "$PROJECT" 2>/dev/null | awk '/Targets:/{f=1;next} f&&NF{print; exit}')
-          SCHEME=$(/usr/bin/xcodebuild -list -project "$PROJECT" 2>/dev/null | awk '/Schemes:/{f=1;next} f&&NF{print; exit}')
+
           echo "project=$PROJECT" >> "$GITHUB_OUTPUT"
           echo "target=$TARGET"   >> "$GITHUB_OUTPUT"
-          echo "scheme=$SCHEME"   >> "$GITHUB_OUTPUT"
-          echo "Detected: project=$PROJECT target=$TARGET scheme=$SCHEME"
+          echo "Detected project: $PROJECT"
+          echo "Detected target:  $TARGET"
 
-      - name: Build (Debug, generic iOS Simulator)
+      - name: Build (Debug, generic iOS Simulator, no signing)
         shell: bash
         run: |
           set -euo pipefail
-          PROJ="${{ steps.detect.outputs.project }}"
-          TGT="${{ steps.detect.outputs.target }}"
-          SCM="${{ steps.detect.outputs.scheme }}"
-          if [[ -n "$TGT" ]]; then
-            xcodebuild -project "$PROJ" -target "$TGT" -configuration Debug \
-              -destination "generic/platform=iOS Simulator" \
-              CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
-              build
-          elif [[ -n "$SCM" ]]; then
-            xcodebuild -project "$PROJ" -scheme "$SCM" -configuration Debug \
-              -destination "generic/platform=iOS Simulator" \
-              CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
-              build
-          else
-            echo "::error ::No target or scheme detected"; exit 1
-          fi
+          xcodebuild \
+            -project "${{ steps.detect.outputs.project }}" \
+            -target  "${{ steps.detect.outputs.target }}" \
+            -configuration Debug \
+            -destination "generic/platform=iOS Simulator" \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+            build
